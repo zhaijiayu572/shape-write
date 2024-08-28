@@ -1,6 +1,6 @@
-import { encode } from 'iconv-lite'
-import builder from 'debug'
-import { isDate, isString } from 'lodash'
+const { encode } = require('iconv-lite')
+const builder = require('debug')
+const { isDate, isString } = require('lodash')
 
 const debug = builder('dbf-js')
 
@@ -12,7 +12,7 @@ function ensureEncoding(encoding) {
   if (encoding) Config.encoding = encoding
 }
 
-export function write(fields, data, filename, encoding = 'gb18030') {
+module.exports.write = function (fields, data, filename, encoding = 'gb18030') {
   ensureEncoding(encoding)
   ensureFieldSize(fields)
 
