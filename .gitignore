@@ -1,0 +1,8 @@
+shpwrite.js
+node_modules
+example/*.dbf
+example/*.shp
+example/*.shx
+yarn.lock
+package-lock.json
+yarn.lock
