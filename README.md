@@ -8,11 +8,11 @@ ZIP file downloads in-browser.
 
 For npm
 
-    npm install --save @hnsygy/shp-write
+    npm install --save shp-write-pure
 
 Yarn
 
-    yarn add @hnsygy/shp-write
+    yarn add shp-write-pure
 
 ## Caveats
 
@@ -58,7 +58,7 @@ const zipData = shpwrite.zip({
 ## Options Example
 
 ```js
-var shpwrite = require('@hnsygy/shp-write')
+var shpwrite = require('shp-write-pure')
 
 const options = {
   folder: 'my_internal_shapes_folder',
@@ -154,7 +154,3 @@ user should instead rely on an external library for this functionality like
 ## Reference
 
 - http://www.esri.com/library/whitepapers/pdfs/shapefile.pdf
-
-## Contributors
-
-- Nick Baugh <niftylettuce@gmail.com>

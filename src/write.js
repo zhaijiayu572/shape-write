@@ -13,7 +13,7 @@ var writers = {
 module.exports = write
 
 // Low-level writing interface
-function write(rows, geometry_type, geometries, callback) {
+function write(rows, geometry_type, geometries, encoding = 'utf-8', callback) {
   var TYPE = types.geometries[geometry_type]
   var writer = writers[TYPE]
   var parts = writer.parts(geometries, TYPE)
@@ -42,7 +42,7 @@ function write(rows, geometry_type, geometries, callback) {
   shpView.setInt32(24, shpLength / 2)
   shxView.setInt32(24, 50 + geometries.length * 4)
 
-  var dbfBuf = dbf.structure(rows)
+  var dbfBuf = dbf.structure(rows, undefined, encoding)
 
   callback(null, {
     shp: shpView,

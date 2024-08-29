@@ -1,6 +1,6 @@
 {
-  "name": "@hnsygy/shp-write",
-  "version": "0.1.0",
+  "name": "shp-write-pure",
+  "version": "0.1.1",
   "description": "write shapefiles from pure javascript",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/mapbox/shp-write.git"
+    "url": "git://github.com/zjypersonal/shp-write.git"
   },
   "files": [
     "dist/index.js",

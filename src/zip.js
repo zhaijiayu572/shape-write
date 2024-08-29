@@ -11,6 +11,7 @@ module.exports = function (gj, options, stream = false) {
   }
 
   var prj = options && options.prj ? options.prj : defaultPrj
+  var encoding = options && options.encoding ? options.encoding : 'utf-8'
 
   ;[
     geojson.point(gj),
@@ -27,11 +28,14 @@ module.exports = function (gj, options, stream = false) {
         l.type,
         // geometries
         l.geometries,
+        encoding,
         function (err, files) {
-          var fileName =
+          var typeName =
             options && options.types && options.types[l.type.toLowerCase()]
               ? options.types[l.type.toLowerCase()]
               : l.type
+          var fileName =
+            options && options.filename ? options.filename : typeName
           zipTarget.file(fileName + '.shp', files.shp.buffer, { binary: true })
           zipTarget.file(fileName + '.shx', files.shx.buffer, { binary: true })
           zipTarget.file(fileName + '.dbf', files.dbf.buffer, { binary: true })
