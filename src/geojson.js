@@ -1,8 +1,6 @@
-module.exports.point = justType("Point", "POINT");
-module.exports.line = justType("LineString", "POLYLINE");
-module.exports.multiline = justType("MultiLineString", "POLYLINE");
-module.exports.polygon = justType("Polygon", "POLYGON");
-module.exports.multipolygon = justType("MultiPolygon", "POLYGON");
+module.exports.point = justType('Point', 'POINT')
+module.exports.line = justType(['LineString', 'MultiLineString'], 'POLYLINE')
+module.exports.polygon = justType(['Polygon', 'MultiPolygon'], 'POLYGON')
 
 /**
  * Generate a function that returns an object with the geometries, properties, and type of the given GeoJSON type
@@ -12,31 +10,34 @@ module.exports.multipolygon = justType("MultiPolygon", "POLYGON");
  */
 function justType(gjType, shpType) {
   return function (gj) {
-    var oftype = gj.features.filter(isType(gjType));
+    var oftype = gj.features.filter(isType(gjType))
     return {
-      geometries: shpType === 'POLYLINE' ? [oftype.map(justCoords)] : oftype.map(justCoords),
+      geometries:
+        shpType === 'POLYLINE'
+          ? [oftype.map(justCoords)]
+          : oftype.map(justCoords),
       properties: oftype.map(justProps),
       type: shpType,
-    };
-  };
+    }
+  }
 }
 
 /**
- * 
+ *
  * @param {Feature} feature The feature to get the coordinates from
  * @returns {number[] | number[][] | number[][][] | number[][][][]}
  */
 function justCoords(feature) {
-  return feature.geometry.coordinates;
+  return feature.geometry.coordinates
 }
 
 /**
- * 
- * @param {Feature} feature The feature to get the properties from 
+ *
+ * @param {Feature} feature The feature to get the properties from
  * @returns {Object.<string, string>}
  */
 function justProps(feature) {
-  return feature.properties;
+  return feature.properties
 }
 
 /**
@@ -47,10 +48,10 @@ function justProps(feature) {
 function isType(type) {
   if (Array.isArray(type))
     return function (f) {
-      return type.includes(f.geometry.type);
-    };
+      return type.includes(f.geometry.type)
+    }
   else
     return function (f) {
-      return f.geometry.type === type;
-    };
+      return f.geometry.type === type
+    }
 }
