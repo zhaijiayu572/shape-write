@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/zjypersonal/shp-write.git"
+    "url": "git://github.com/zhaijiayu572/shp-write.git"
   },
   "files": [
     "dist/index.js",
