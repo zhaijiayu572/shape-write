@@ -25,7 +25,7 @@ Yarn
 ## Minimal Example
 
 ```js
-var shpwrite = require('@hnsygy/shp-write')
+var shpwrite = require('shp-write-pure')
 
 // a GeoJSON bridge for features
 const zipData = shpwrite.zip({
